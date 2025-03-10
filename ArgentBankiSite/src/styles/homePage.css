@@ -1,0 +1,8 @@
+.hero {
+  background-image: url(../img/bank-tree.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+  position: relative;
+  background-position: 0px -50px;
+}
