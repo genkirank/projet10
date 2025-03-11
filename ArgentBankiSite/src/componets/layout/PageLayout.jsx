@@ -17,16 +17,16 @@ function PageLayout() {
           <i className='fa fa-user-circle'></i>
           <NavLink
             className='sign-in'
-            to='/sign-in'>
+            to='/login'>
             Sign In
           </NavLink>
         </div>
       </header>
-      <main className='page-content'>
+      <main className='page-content '>
         <Outlet />
       </main>
       <footer className='page-footer'>
-        <p>Copyright 2020 Argent Bank</p>
+        <p className='footer-texte'>Copyright 2020 Argent Bank</p>
       </footer>
     </div>
   )
