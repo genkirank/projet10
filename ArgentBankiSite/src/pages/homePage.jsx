@@ -1,4 +1,5 @@
-import'''
+import Feature from '../componets/feature/feature'
+import '../styles/homePage.css'
 export default function HomePage() {
   return (
     <>
@@ -10,7 +11,8 @@ export default function HomePage() {
           <p className='subtitle'>High interest rates.</p>
           <p className='text'>Open a savings account with Argent Bank today!</p>
         </section>
-      </div>{' '}
+      </div>
+      <Feature />
     </>
   )
 }
