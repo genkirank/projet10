@@ -1,17 +1,37 @@
 import '../styles/sign-in.css'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { loginUser } from '../componets/feature/authSlice';
+import { useNavigate } from 'react-router-dom';
 export default function Sign_in() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.auth.status);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (status === 'succeeded') {
+      navigate('/profile');
+    }
+  }, [status, navigate]);
   return (
     <>
       <main className='main bg-dark'>
         <section className='sign-in-content'>
           <i className='fa fa-user-circle '></i>
           <h1>Sign In</h1>
-          <form>
+          <form onSubmit={(e) => {
+             e.preventDefault();
+               dispatch(loginUser({ email, password }));
+              }}>
             <div className='input-wrapper'>
               <label for='username'>Username</label>
               <input
                 type='text'
                 id='username'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className='input-wrapper'>
@@ -19,6 +39,8 @@ export default function Sign_in() {
               <input
                 type='password'
                 id='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className='input-remember'>
@@ -31,10 +53,14 @@ export default function Sign_in() {
 
             <button
               className='sign-in-button'
-              to='/profile'>
+              to='/profile'
+            type='submit'>
               Sign In
             </button>
           </form>
+          {status === 'loading' && <p>connexion en cour</p>}
+          {status === 'failed' && <p>échec de connexion</p>}
+          {status === 'succeeded' && <p>Connexion réussie !</p>}
         </section>
       </main>{' '}
     </>
