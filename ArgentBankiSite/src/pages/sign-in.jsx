@@ -1,7 +1,7 @@
 import '../styles/sign-in.css'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../componets/feature/authSlice';
+import { loginUser , getUserProfile } from '../componets/feature/authSlice';
 import { useNavigate } from 'react-router-dom';
 export default function Sign_in() {
   const [email, setEmail] = useState('');
@@ -12,6 +12,7 @@ export default function Sign_in() {
 
   useEffect(() => {
     if (status === 'succeeded') {
+      dispatch(getUserProfile());
       navigate('/profile');
     }
   }, [status, navigate]);
@@ -26,7 +27,7 @@ export default function Sign_in() {
                dispatch(loginUser({ email, password }));
               }}>
             <div className='input-wrapper'>
-              <label for='username'>Username</label>
+              <label htmlFor='username'>Username</label>
               <input
                 type='text'
                 id='username'
@@ -35,7 +36,7 @@ export default function Sign_in() {
               />
             </div>
             <div className='input-wrapper'>
-              <label for='password'>Password</label>
+              <label htmlFor='password'>Password</label>
               <input
                 type='password'
                 id='password'
@@ -48,7 +49,7 @@ export default function Sign_in() {
                 type='checkbox'
                 id='remember-me'
               />
-              <label for='remember-me'>Remember me</label>
+              <label htmlFor='remember-me'>Remember me</label>
             </div>
 
             <button

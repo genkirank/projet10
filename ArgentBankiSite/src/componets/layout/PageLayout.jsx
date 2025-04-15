@@ -1,7 +1,21 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import Logo from '../../assets/Logo/argentBankLogo.png'
 import './PageLayout.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../feature/authSlice';
+
 function PageLayout() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user
+  )
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    dispatch(logout()) 
+    navigate('/login')
+
+  }
   return (
     <div className='styleLayout'>
       <header className='page-header'>
@@ -15,12 +29,19 @@ function PageLayout() {
 
         <div className='header-item'>
           <i className='fa fa-user-circle'></i>
-          <NavLink
-            className='sign-in'
-            to='/login'>
-            Sign In
-          </NavLink>
-        </div>
+          {user?.firstName}
+          {
+  user ? (
+    <NavLink className='sign-in'  to="#"onClick={handleLogout}>
+      <i className='fa fa-sign-out'></i> Sign Out
+    </NavLink>
+  ) : (
+    <NavLink className='sign-in' to='/login'>
+    Sign In
+    </NavLink>
+  )
+}
+          </div>
       </header>
       <main className='page-content '>
         <Outlet />
