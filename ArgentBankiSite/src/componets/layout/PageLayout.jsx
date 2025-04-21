@@ -29,7 +29,7 @@ function PageLayout() {
 
         <div className='header-item'>
           <i className='fa fa-user-circle'></i>
-          {user?.firstName}
+          {user?.userName}
           {
   user ? (
     <NavLink className='sign-in'  to="#"onClick={handleLogout}>

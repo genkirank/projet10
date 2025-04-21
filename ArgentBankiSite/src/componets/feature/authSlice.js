@@ -38,7 +38,7 @@ export const loginUser = createAsyncThunk(
 export const getUserProfile = createAsyncThunk(
   "auth/getUserProfile",
   async (_, thunkApi) => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     try {
       const response = await fetch(`${BASE_URL}/user/profile`, {
         method: "GET",
@@ -66,7 +66,7 @@ export const getUserProfile = createAsyncThunk(
 export const updateUserName = createAsyncThunk(
   "auth/updateUserName",
   async ({ userName }, thunkApi) => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     try {
       const response = await fetch(`${BASE_URL}/user/profile`, {
         method: "PUT",
@@ -98,7 +98,7 @@ const authSlice = createSlice({
         logout: (state) => {
             state.user = null;
             state.token = null;
-            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
           }
   },
   extraReducers: (builder) => {
@@ -111,7 +111,7 @@ const authSlice = createSlice({
       state.status = "succeeded";
       state.user = action.payload;
       state.token = action.payload.token;
-      localStorage.setItem("token", action.payload.token); 
+      sessionStorage.setItem("token", action.payload.token); 
     });
     builder.addCase(loginUser.rejected, (state, action) => {
       state.status = "failed";
