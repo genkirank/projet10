@@ -1,11 +1,13 @@
 .hero {
-  background-image: url(../assets/img/home-bank-tree.jpeg);
+  background-image: url(../assets/img/Home-Bank-Tree.webp);
   background-size: cover;
   background-repeat: no-repeat;
   height: 300px;
   position: relative;
+  background-attachment: scroll;  
   background-position: 0px -50px;
   width: 100%;
+  background-blend-mode: overlay;
 }
 
 .hero-content {

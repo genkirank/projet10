@@ -1,5 +1,5 @@
 import './feature.css'
-import chatIcon from '../../assets/img/icon-chat.png'
+import chatIcon from '../../assets/img/icone-chat.png'
 import moneyIcon from '../../assets/img/icon-money.png'
 import securityIcon from '../../assets/img/icon-Security.png'
 

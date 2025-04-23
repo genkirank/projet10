@@ -75,6 +75,8 @@ paths:
           description: User profile retrieved successully
           schema:
             $ref: "#/definitions/ApiResponse"
+        "401":
+          description: Unauthorized - Token missing or invalid
         "400":
           description: Invalid Fields
         "500":
@@ -100,6 +102,8 @@ paths:
           description: User profile retrieved successully
           schema:
             $ref: "#/definitions/ApiResponse"
+        "401":
+          description: Unauthorized - Token missing or invalid
         "400":
           description: Invalid Fields
         "500":
@@ -119,6 +123,8 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Transaction"
+        "401":
+          description: Unauthorized - Token missing or invalid
         "400":
           description: Invalid request
         "500":
@@ -153,6 +159,8 @@ paths:
           description: Transaction retrieved successfully
           schema:
             $ref: "#/definitions/Transaction"
+        "401":
+          description: Unauthorized - Token missing or invalid
         "400":
           description: Invalid request
         "500":
@@ -184,8 +192,31 @@ paths:
           description: Transaction updated successfully
           schema:
             $ref: "#/definitions/ApiResponse"
+        "401":
+          description: Unauthorized - Token missing or invalid
         "400":
           description: Invalid request
+        "500":
+          description: Internal server error
+  /transaction/current-month:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Get user transactions for current month
+      description: Retrieve all user transactions from the current month
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transactions retrieved successfully
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Transaction"
+        "401":
+          description: Unauthorized - Token missing or invalid
         "500":
           description: Internal server error
 
