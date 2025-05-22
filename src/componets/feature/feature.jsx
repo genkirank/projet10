@@ -1,7 +1,7 @@
 import './feature.css'
 import chatIcon from '../../assets/img/icone-chat.png'
 import moneyIcon from '../../assets/img/icon-money.png'
-import securityIcon from '../../assets/img/icon-security-D-ocu1_X.png'
+import securityIcon from '../../assets/img/securityIcon.png'
 
 const features = [
   {
